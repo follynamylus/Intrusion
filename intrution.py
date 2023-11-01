@@ -8,7 +8,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 tab_1,tab_2 = st.tabs(['VIEW PREDICTION','DATAFRAME AND DOWNLOAD'])
 
-model = pickle.load(open("GB.pkl", 'rb'))
+model = pickle.load(open("Gb.pkl", 'rb'))
 
 option = st.sidebar.selectbox("Choose the type of prediction to perform",["Single","Multiple"])
 if option.lower() == "single" :
