@@ -41,14 +41,14 @@ if option.lower() == "single" :
 
 
     if pred == 0 :
-        prediction = "Attack"
+        prediction = "Anomaly"
     else : 
         prediction = "Normal"
 
     df["prediction"] = prediction
 
     tab_1.success("Prediction")
-    tab_1.title(f"From the features provided and the threshold considered, The connection is predicted to be {prediction}")
+    tab_1.title(f"From the features provided, The connection is predicted to be {prediction}")
 
     tab_2.success("Dataframe after prediction")
     tab_2.dataframe(df)
