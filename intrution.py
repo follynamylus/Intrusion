@@ -48,23 +48,10 @@ if option.lower() == "single" :
     df["prediction"] = prediction
 
     tab_1.success("Prediction")
-    tab_1.title(f"From the features provided, The connection is predicted to be {prediction}")
-
-    tab_1.success("Prediction probability")
-    tab_1.write(f'probability of having an Attack is {model.predict_proba(data)[:,0] * 100} %')
+    tab_1.title(f"From the features provided and the threshold considered, The connection is predicted to be {prediction}")
 
     tab_2.success("Dataframe after prediction")
     tab_2.dataframe(df)
-    classes = ["Attack Probability", "Normal Probability"]
-    proba = model.predict_proba(data)
-    fig = sns.barplot(x=np.arange(len(proba[0])), y=proba[0])
-    plt.xticks(np.arange(len(proba[0])), labels=[f"Class {i}" for i in classes])
-    plt.xlabel('Normal Probability')
-    plt.ylabel('Probability')
-    plt.title(f'Predicted Probabilities for Single Sample')
-    plt.savefig('predicted_probabilities.png')
-    tab_2.success("Count Plot for prediction probability")
-    tab_2.pyplot()
 else :
     file = st.sidebar.file_uploader("Upload file to test")
     if file == None :
@@ -75,8 +62,6 @@ else :
         tab_2.success("Dataframe before prediction")
         tab_2.dataframe(df)
         pred = model.predict(df)
-        pred_proba = model.predict_proba(df)[:,1]*100
-        df['pred_proba'] = pred_proba
         prediction = []
         for i in pred :
              if i == 0 :
